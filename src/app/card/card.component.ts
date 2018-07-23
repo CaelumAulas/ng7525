@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Foto } from '../foto/foto';
 
 @Component({
   selector: 'caelumpic-card',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CardComponent implements OnInit {
 
-  @Input() foto
+  @Input() foto = new Foto()
 
   constructor() { }
 

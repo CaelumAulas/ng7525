@@ -4,11 +4,11 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { FotoModule } from './foto/foto.module';
 import { HttpClientModule } from '@angular/common/http';
-import { CardComponent } from './card/card.component';
 import { ListagemComponent } from './listagem/listagem.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { ModuloRoteamento } from './app.routes';
 import { CardModule } from './card/card.module';
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -21,7 +21,8 @@ import { CardModule } from './card/card.module';
     HttpClientModule,
     FotoModule,
     CardModule,
-    ModuloRoteamento
+    ModuloRoteamento,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

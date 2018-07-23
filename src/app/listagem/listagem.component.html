@@ -10,8 +10,12 @@
   </div>
 
   <div class="row">
-    <caelumpic-card  *ngFor="let foto of listaFotos" [foto]="foto" class="col-2">
+    <caelumpic-card *ngFor="let foto of listaFotos" [foto]="foto" class="col-sm-4 coql-lg-2 mb-4" [title]="foto._id">
+
         <foto [url]="foto.url" [titulo]="foto.titulo"></foto>
+        <button (click)="deletar(foto)" class="btn btn-danger">
+          Apagar
+        </button>
     </caelumpic-card>
   </div>
 </main>
