@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { FotoService } from "../services/foto.service";
+import { Foto } from '../foto/foto';
 
 @Component({
   selector: 'caelumpic-listagem',
@@ -8,35 +9,28 @@ import { HttpClient } from "@angular/common/http";
 })
 export class ListagemComponent implements OnInit {
 
-  listaFotos
+  listaFotos: Foto[] = []
 
-  constructor(private conexaoApi: HttpClient){
-      
-    conexaoApi.get('http://localhost:3000/v1/fotos')
-              .subscribe(
-                (fotosApi) => {
-                  this.listaFotos = fotosApi
-                }
-              )
-  }
-
+  constructor(private servico: FotoService ){}
+  
   ngOnInit() {
+    this.servico.listar()
+                .subscribe(
+                  fotosApi => this.listaFotos = fotosApi
+                )
   }
 
-  deletar(fotoApagada){
-    this.conexaoApi
-        .delete('http://localhost:3000/v1/fotos/'+fotoApagada._id)
+  deletar(fotoApagada: Foto){
+        this.servico.deletar(fotoApagada._id)
         .subscribe(
           () => {
 
-this.listaFotos = Array.from(this.listaFotos)
-                      .filter((fotoLoop)=> {
-                            if(fotoLoop != fotoApagada){
-                              return fotoLoop
-                            }
-                        })
-            
-            
+            this.listaFotos = Array.from(this.listaFotos)
+                                  .filter((fotoLoop)=> {
+                                        if(fotoLoop != fotoApagada){
+                                          return fotoLoop
+                                        }
+                                    })            
           }
         )
   }

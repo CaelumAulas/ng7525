@@ -8,13 +8,17 @@ import { ListagemComponent } from './listagem/listagem.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { ModuloRoteamento } from './app.routes';
 import { CardModule } from './card/card.module';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MensagemComponent } from './mensagem/mensagem.component';
+import { FiltroPorTitulo } from './listagem/filtroPorTitulo.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListagemComponent,
-    CadastroComponent
+    CadastroComponent,
+    MensagemComponent,
+    FiltroPorTitulo
   ],
   imports: [
     BrowserModule,
@@ -22,7 +26,8 @@ import { FormsModule } from "@angular/forms";
     FotoModule,
     CardModule,
     ModuloRoteamento,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
